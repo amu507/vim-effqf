@@ -13,6 +13,31 @@ function! GetModifiableW()
 	return -1 
 endfunction
 
+function! BufModifiable(iBuf)
+	if getbufvar(a:iBuf,"&modifiable")!=#1
+		return 0
+	endif
+	if InSysBuf(a:iBuf)
+		return 0
+	endif
+	return 1
+endfunction
+
+"g_FixBuff要先定义
+function! InSysBuf(...)
+	let iBuf=get(a:000,0,0)
+	if iBuf==#0
+		let iBuf=bufnr("%")
+	endif
+	for sBuff in g:g_FixBuff
+		if bufname(iBuf)=~#sBuff
+			return 1
+			break
+		endif
+	endfor
+	return 0 
+endfunction
+
 function! OnHitEnter(sExt)
 	let sLine=getline(".")   
 	let lstTmp=split(sLine,"|")
