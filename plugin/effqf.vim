@@ -70,5 +70,5 @@ function! GotoEffqfLine()
 	endfor
 endfunction
 
-nmap <c-left> <leader>gq<up><cr>
-nmap <c-right> <leader>gq<down><cr>
+nmap <c-left> :call GotoWindow("sys.effqf")<CR><up><cr>
+nmap <c-right> :call GotoWindow("sys.effqf")<CR><down><cr>
