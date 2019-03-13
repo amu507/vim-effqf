@@ -49,6 +49,7 @@ function! ShowEffqf(sEffqf,...)
 	endif
 	let @0=""
 	setlocal nomodifiable
+	silent execute("w!")
 endfunction
 
 function! SignEffqf(errs)
